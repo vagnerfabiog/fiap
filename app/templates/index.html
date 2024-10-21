@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Consultas - Embrapa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        h1 {
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        code {
+            background-color: #e0e0e0;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #00796b;
+            color: white;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>API de Consultas - Dados Embrapa</h1>
+    </header>
+    <main>
+        <p>Bem-vindo à API de consultas de dados vitivinícolas da Embrapa.</p>
+        <p>Esta API permite acessar informações de <strong>produção</strong>, <strong>processamento</strong>, <strong>comercialização</strong>, <strong>importação</strong> e <strong>exportação</strong> de dados disponíveis no portal da Embrapa.</p>
+        <h2>Como usar a API</h2>
+        <p>Para acessar os dados, você pode utilizar as seguintes rotas:</p>
+        <ul>
+            <li><code>/producao</code> - Dados de produção</li>
+            <li><code>/processamento</code> - Dados de processamento</li>
+            <li><code>/comercializacao</code> - Dados de comercialização</li>
+            <li><code>/importacao</code> - Dados de importação</li>
+            <li><code>/exportacao</code> - Dados de exportação</li>
+        </ul>
+        <p>Exemplo de chamada via <strong>Python</strong>:</p>
+        <pre><code>import requests
+
+response = requests.get('http://localhost:8000/producao')
+print(response.json())</code></pre>
+    </main>
+    <footer>
+        <p>API desenvolvida para consulta pública | Embrapa © 2024</p>
+    </footer>
+</body>
+</html>
