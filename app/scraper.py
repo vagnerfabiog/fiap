@@ -1,6 +1,8 @@
 import requests # Para fazer a requisição HTTP
 from bs4 import BeautifulSoup # Para processar o HTML da página
 
+
+
 def get_table_data(url: str) -> dict:
     """Extrai dados de uma tabela específica da página HTML."""
     response = requests.get(url)  # Faz a requisição HTTP para a URL
@@ -17,6 +19,8 @@ def get_table_data(url: str) -> dict:
         if len(cells) == 2: # Espera exatamente 2 células (nome e volume)
             if cells[0].get('class') == ['tb_item']: # Categoria principal
                 current_category = cells[0].text.strip() # Remove espaços em branco do texto
+                #total = cells[1].text.strip()  # Captura o total da categoria
+                #data[current_category] = {"Total": total}  # Inicializa a categoria com o total
                 data[current_category] = {} # Cria um dicionário vazio para a nova categoria
             elif cells[0].get('class') == ['tb_subitem']: # Subcategoria 
                 subcategory = cells[0].text.strip()
