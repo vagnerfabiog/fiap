@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from datetime import timedelta
 from app.jwt.auth import authenticate_user, create_access_token
-from app.jwt.config import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.config import ACCESS_TOKEN_EXPIRE_MINUTES
 
 # Criar um roteador específico para rotas de autenticação
 router = APIRouter()

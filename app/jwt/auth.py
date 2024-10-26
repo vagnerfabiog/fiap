@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer
-from app.jwt.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 from app.jwt.models import User, fake_users_db
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

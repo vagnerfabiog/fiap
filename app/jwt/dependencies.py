@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException
 from jose import JWTError, jwt
 from app.jwt.auth import oauth2_scheme
-from app.jwt.config import SECRET_KEY, ALGORITHM
+from app.config import SECRET_KEY, ALGORITHM
 from app.jwt.models import User, fake_users_db
 from app.jwt.auth import get_user
 

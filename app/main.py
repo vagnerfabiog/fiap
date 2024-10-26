@@ -7,11 +7,11 @@ from app.routes.home import router as home_router
 from app.routes.processamento import router as processamento_router
 from app.jwt.auth import authenticate_user, create_access_token
 from app.jwt.dependencies import get_current_user
-from app.jwt.config import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.config import ACCESS_TOKEN_EXPIRE_MINUTES
 from fastapi.security import OAuth2PasswordRequestForm
 from datetime import timedelta
 from app.jwt.auth_routes import router as auth_router  
-from app.jwt.config import API_DESCRIPTION, API_TITLE, API_VERSION, CONTACT_INFO
+from app.config import API_DESCRIPTION, API_TITLE, API_VERSION, CONTACT_INFO
 
 
 app = FastAPI(
