@@ -3,38 +3,20 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import hashlib
-
-# Diretório onde os arquivos de cache serão armazenados
-CACHE_DIR = "cache_dados"
-os.makedirs(CACHE_DIR, exist_ok=True)  # Cria o diretório de cache se ele não existir
-
-def gerar_nome_arquivo_cache(url: str) -> str:
-    """Gera um nome de arquivo único para uma URL usando hash SHA-256."""
-    hash_url = hashlib.sha256(url.encode()).hexdigest()
-    return os.path.join(CACHE_DIR, f"{hash_url}.json")
-
-def salvar_cache(url: str, dados):
-    """Salva os dados no arquivo de cache específico para a URL."""
-    cache_file = gerar_nome_arquivo_cache(url)
-    with open(cache_file, "w", encoding="utf-8") as f:
-        json.dump(dados, f, ensure_ascii=False, indent=4)
-
-def carregar_cache(url: str):
-    """Carrega os dados do arquivo de cache específico para a URL, se existir."""
-    cache_file = gerar_nome_arquivo_cache(url)
-    if os.path.exists(cache_file):
-        with open(cache_file, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return None
+from app.services.redis_cache import salvar_cache, carregar_cache
 
 def get_table_data(url: str) -> dict:
     """Extrai dados de uma tabela específica da página HTML com cache."""
+    # Primeiro, tenta carregar os dados do cache Redis
+    cache = carregar_cache(url)
+    if cache:
+        print("Carregando dados do cache Redis...")
+        return cache
+
+    # Se não houver cache, faz a requisição e processa os dados
     try:
-        # Tenta fazer a requisição
         response = requests.get(url)
         response.raise_for_status()  # Lança uma exceção para status de erro HTTP
-
-        # Processa a resposta se a requisição for bem-sucedida
         soup = BeautifulSoup(response.content, 'html.parser')
         table = soup.find('table', class_='tb_base tb_dados')
         data = {}
@@ -51,11 +33,11 @@ def get_table_data(url: str) -> dict:
                     volume = cells[1].text.strip()
                     data[current_category][subcategory] = volume
 
-        salvar_cache(url, data)  # Salva os dados no cache
+        salvar_cache(url, data)  # Salva os dados no Redis
         return data
 
     except requests.RequestException:
-        # Caso ocorra uma falha na requisição, carrega os dados do cache
+        # Caso ocorra uma falha na requisição, tenta carregar os dados do cache
         print("Erro ao acessar o site, carregando dados do cache...")
         cache = carregar_cache(url)
         if cache:
@@ -65,10 +47,16 @@ def get_table_data(url: str) -> dict:
 
 def get_table_data2(url: str) -> dict:
     """Extrai dados de uma tabela específica da página HTML com cache."""
+    # Primeiro, tenta carregar os dados do cache Redis
+    cache = carregar_cache(url)
+    if cache:
+        print("Carregando dados do cache Redis...")
+        return cache
+
+    # Se não houver cache, faz a requisição e processa os dados
     try:
         response = requests.get(url)
         response.raise_for_status()
-
         soup = BeautifulSoup(response.content, 'html.parser')
         table = soup.find('table', class_='tb_base tb_dados')
         data = {}
