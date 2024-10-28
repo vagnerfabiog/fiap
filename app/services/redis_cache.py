@@ -7,7 +7,7 @@ redis_client = redis.StrictRedis(
     port=10375,          
     db=0,                  
     password='CzvEqwj7fP10K9QFaWZrpRZ8JxTGB7v8',   
-    decode_responses=True   # Configuração para retornar strings em vez de bytes
+    decode_responses=True  
 )
 
 
@@ -19,7 +19,7 @@ def gerar_chave_cache(url: str) -> str:
 def salvar_cache(url: str, dados):
     """Salva os dados no Redis com uma chave específica para a URL."""
     cache_key = gerar_chave_cache(url)
-    redis_client.set(cache_key, json.dumps(dados))  # Armazena os dados no Redis como JSON
+    redis_client.set(cache_key, json.dumps(dados)) 
     redis_client.expire(cache_key, 3600) # Define uma expiração de 1 hora
    
 

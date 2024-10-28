@@ -23,7 +23,7 @@ def verify_password(plain_password, stored_password):
 def get_user(db, username: str) -> Optional[User]:
     user_dict = db.get(username)
     if user_dict:
-        return User(**user_dict)  # Retorna uma instância de User
+        return User(**user_dict)  
     return None
 
 # Função para autenticar o usuário

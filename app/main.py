@@ -23,10 +23,11 @@ app = FastAPI(
 
 # Registro das rotas de autenticação
 app.include_router(auth_router)
+app.include_router(home_router)
+
  # Incluindo as rotas com as dependências de autenticação nas rotas protegidas
 app.include_router(comercializacao_router, dependencies=[Depends(get_current_user)])
 app.include_router(importacao_router, dependencies=[Depends(get_current_user)])
 app.include_router(exportacao_router, dependencies=[Depends(get_current_user)])
-app.include_router(home_router)
 app.include_router(producao_router, dependencies=[Depends(get_current_user)])
 app.include_router(processamento_router, dependencies=[Depends(get_current_user)])
