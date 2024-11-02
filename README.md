@@ -28,7 +28,7 @@ Este projeto foi criado como parte do TECH CHALLENGE da fase 1 da Pós Tech da F
 
 - **Python 3.10 ou superior**
 - [Poetry](https://python-poetry.org/) para gerenciamento de dependências
-- Conta no [Railway](https://railway.app/) ou outra plataforma de deploy para hospedar a API
+- Conta no [Railway](https://railway.app/) como plataforma de deploy para hospedar a API
 
 ---
 
@@ -44,7 +44,7 @@ Para instalar e executar o projeto localmente:
     poetry install
 
 3. Configure as variáveis de ambiente:
-    Crie um arquivo .env na raiz do projeto baseado no .env.example e adicione variáveis como SECRET_KEY e ACCESS_TOKEN_EXPIRE_MINUTES.
+    Crie um arquivo .env na raiz do projeto baseado no config.py e adicione variáveis como SECRET_KEY e ACCESS_TOKEN_EXPIRE_MINUTES.
 
 ---
 
@@ -62,9 +62,6 @@ Após a instalação, você pode iniciar o servidor localmente:
 
 ---
 
-## Configuração
-Variáveis de ambiente não são necessárias.
-
 
 ## Estrutura do Projeto
 
@@ -74,10 +71,9 @@ Variáveis de ambiente não são necessárias.
 │   ├── config.py            # Configurações globais
 │   ├── routes/              # Pastas para as rotas da API
 │   ├── jwt/                 # Autenticação e autorização com JWT
-│   ├── utils/               # Utilitários como cache e manipulação de dados
+│   ├── services/            # Utilitários como cache e manipulação de dados
 │   └── tests/               # Testes unitários e de integração
 ├── README.md
-├── .env.example             # Exemplo de variáveis de ambiente
 └── pyproject.toml           # Configuração do Poetry
 
 
@@ -110,6 +106,6 @@ Este projeto está licenciado sob a licença MIT.
 
 ---
 ## Contato
-Desenvolvido por Diego / Vagner / Fabio - Entre em contato!
+Desenvolvido por Diego / Vagner  - Entre em contato!
 
 
