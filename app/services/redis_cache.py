@@ -20,7 +20,7 @@ def salvar_cache(url: str, dados):
     """Salva os dados no Redis com uma chave específica para a URL."""
     cache_key = gerar_chave_cache(url)
     redis_client.set(cache_key, json.dumps(dados)) 
-    redis_client.expire(cache_key, 3600) # Define uma expiração de 1 hora
+   # redis_client.expire(cache_key, 3600) # Define uma expiração de 1 hora
    
 
 def carregar_cache(url: str):
