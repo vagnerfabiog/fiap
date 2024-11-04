@@ -19,6 +19,6 @@ Sinta-se à vontade para explorar a documentação e testar os endpoints.
 """
 API_VERSION="1.0.0"
 CONTACT_INFO = {
-        "name": "Diego / Vagner / Fabio",
+        "name": "Diego / Vagner",
         "email": "ra@fiap.com.br",
     }
