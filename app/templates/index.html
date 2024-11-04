@@ -4,71 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API de Consultas - Embrapa</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome (para ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Aplicando a fonte Poppins */
+            background-color: #f4f4f4;
+            color: #333;
         }
         header {
-            background-color: #00796b;
+            background: #007f3d;
             color: white;
+            padding: 40px 0;
             text-align: center;
-            padding: 1em;
         }
-        h1 {
-            margin: 0;
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+            font-weight: 600; /* Ajusta a espessura da fonte */
         }
-        main {
-            max-width: 800px;
-            margin: 2em auto;
-            padding: 1em;
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        header p {
+            font-size: 1.3em;
         }
-        p {
-            line-height: 1.6;
+        .container {
+            margin-top: 40px;
         }
-        code {
-            background-color: #e0e0e0;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
+        .github-link, .docs-link {
+            display: inline-block;
+            margin: 20px 10px;
+           
+            text-decoration: none;
+           
+        }
+        .github-link i, .docs-link i {
+            margin-right: 8px;
         }
         footer {
             text-align: center;
-            padding: 1em;
-            background-color: #00796b;
-            color: white;
-            margin-top: 2em;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+            padding-bottom: 20px;
+        }
+        .card h2, .card h3, .card h4 {
+            font-weight: 500; /* Definindo um peso médio para os títulos */
+        }
+        ul.list-group-flush li {
+            font-size: 0.9em; /* Aumenta um pouco o tamanho da fonte dos itens */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>API de Consultas - Dados Embrapa</h1>
-    </header>
-    <main>
-        <p>Bem-vindo à API de consultas de dados vitivinícolas da Embrapa.</p>
-        <p>Esta API permite acessar informações de <strong>produção</strong>, <strong>processamento</strong>, <strong>comercialização</strong>, <strong>importação</strong> e <strong>exportação</strong> de dados disponíveis no portal da Embrapa.</p>
-        <h2>Como usar a API</h2>
-        <p>Para acessar os dados, você pode utilizar as seguintes rotas:</p>
-        <ul>
-            <li><code>/producao</code> - Dados de produção</li>
-            <li><code>/processamento</code> - Dados de processamento</li>
-            <li><code>/comercializacao</code> - Dados de comercialização</li>
-            <li><code>/importacao</code> - Dados de importação</li>
-            <li><code>/exportacao</code> - Dados de exportação</li>
-        </ul>
-        <p>Exemplo de chamada via <strong>Python</strong>:</p>
-        <pre><code>import requests
 
-response = requests.get('http://localhost:8000/producao')
-print(response.json())</code></pre>
-    </main>
-    <footer>
-        <p>API desenvolvida para consulta pública | Embrapa © 2024</p>
-    </footer>
+<header>
+    <h1>API de Consultas - Embrapa</h1>
+    <p>Consultas a dados de vitivinicultura da Embrapa</p>
+</header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-lg p-4">
+                <h2>Sobre o Projeto</h2>
+                <p>Este projeto é parte do TECH CHALLENGE da fase 1 da Pós Tech da FIAP do curso Machine Learning Engineering.</p>
+                <p>A API permite consultas a dados relevantes sobre a produção, processamento, comercialização, importação e exportação relacionados ao setor vitivinícola.</p>
+                
+                <h3>Utilização</h3>
+                <p>Você pode acessar a API através das rotas definidas para obter informações específicas sobre a vitivinicultura.</p>
+                
+                <!-- Lista de Endpoints da API -->
+                <br>
+
+                <h4>Endpoints Disponíveis</h4>
+                <ul id="endpoints-list" class="list-group list-group-flush">
+                    <!-- Endpoints dinâmicos serão inseridos aqui -->
+                </ul>
+
+                <!-- Link para o GitHub -->
+                <div class="text-center mt-4">
+                    <a href="https://github.com/vagnerfabiog/fiap" class="github-link btn btn-outline-success" target="_blank">
+                        <i class="fab fa-github"></i> Acesse o repositório no GitHub
+                    </a>
+                    
+                    <!-- Link dinâmico para a documentação -->
+                    <a id="docs-link" class="docs-link btn btn-success" target="_blank">
+                        <i class="fas fa-book"></i> Documentação da API (Swagger)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 - Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    // Captura dinamicamente o protocolo, host e porta
+    const baseUrl = `${window.location.protocol}//${window.location.host}`;
+
+    // Defina os endpoints da API
+    const endpoints = [
+        { path: "/producao", description: "Retorna dados sobre a produção de uvas e vinhos." },
+        { path: "/processamento", description: "Retorna dados sobre o processamento de uvas." },
+        { path: "/comercializacao", description: "Retorna dados sobre a comercialização de produtos vitivinícolas." },
+        { path: "/importacao", description: "Retorna dados sobre a importação de vinhos." },
+        { path: "/exportacao", description: "Retorna dados sobre a exportação de vinhos." }
+    ];
+
+    // Seleciona o elemento UL na página
+    const endpointsList = document.getElementById('endpoints-list');
+
+    // Gera dinamicamente os links para os endpoints
+    endpoints.forEach(endpoint => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item'); // Adiciona o estilo do Bootstrap
+        li.innerHTML = `<strong><a href="${baseUrl}${endpoint.path}" target="_blank">${endpoint.path}</a></strong>: ${endpoint.description}`;
+        endpointsList.appendChild(li);
+    });
+
+    // Adiciona o link dinâmico para a documentação Swagger
+    document.getElementById("docs-link").href = `${baseUrl}/docs`;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
