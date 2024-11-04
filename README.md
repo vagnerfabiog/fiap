@@ -63,8 +63,6 @@ Para instalar e executar o projeto localmente:
 ```bash
 uvicorn app.main:app --reload
 ```   
-A documentação pode ser acessada via URL: `http://127.0.0.1:8000/docs`.
----
 
 ## Uso
 
@@ -113,41 +111,34 @@ A documentação pode ser acessada via URL: `http://127.0.0.1:8000/docs`.
 4. Você deve receber uma resposta semelhante a:
 
     ```json
-  {
-    "VINHO DE MESA": {
-        "total": 169762429,
-        "subitens": {
-            "Tinto": 139320884,
-            "Branco": 27910299,
-            "Rosado": 2531246
-        }
-    },
-    "VINHO FINO DE MESA (VINIFERA)": {
-        "total": 46268556,
-        "subitens": {
-            "Tinto": 23615783,
-            "Branco": 20693437,
-            "Rosado": 1959336
-        }
-    }
-    }
+            {
+                "VINHO DE MESA": {
+                    "total": 169762429,
+                    "subitens": {
+                        "Tinto": 139320884,
+                        "Branco": 27910299,
+                        "Rosado": 2531246
+                    }
+                },
+                "VINHO FINO DE MESA (VINIFERA)": {
+                    "total": 46268556,
+                    "subitens": {
+                        "Tinto": 23615783,
+                        "Branco": 20693437,
+                        "Rosado": 1959336
+                    }
+                }
+            }
     ```
 
 
-## Estrutura do Projeto
-.
-├── app/
-│   ├── main.py              # Arquivo principal da aplicação
-│   ├── config.py            # Configurações globais
-│   ├── routes/              # Pastas para as rotas da API
-│   ├── jwt/                 # Autenticação e autorização com JWT
-│   ├── services/            # Utilitários como cache e manipulação de dados
-│   └── tests/               # Testes unitários e de integração
-├── README.md
-└── pyproject.toml           # Configuração do Poetry
+## Arquitetura do projeto
+
+Segue esturura do projeto.
+
+![arquiteturatechchallenge](https://github.com/vagnerfabiog/fiap/blob/main/Diagrama.png)
 
 
----
 
 ## Tecnologias Utilizadas
 
@@ -160,14 +151,6 @@ BeautifulSoup - Para scraping de dados da web.
 Railway - Plataforma de deploy e hospedagem (opcional).
 
 ---
-
-
-## Arquitetura do projeto
-
-Segue esturura do projeto.
-
-![arquiteturatechchallenge](diagrama.png)
-
 
 
 ## Contribuição
