@@ -139,6 +139,13 @@ Segue esturura do projeto.
 ![arquiteturatechchallenge](https://github.com/vagnerfabiog/fiap/blob/main/Diagrama.png)
 
 
+## Deploy
+
+Segue esturura do deploy.
+
+![arquiteturaDeppoytechchallenge](https://github.com/vagnerfabiog/fiap/blob/main/DiagramaDeploy.png)
+
+
 
 ## Tecnologias Utilizadas
 
