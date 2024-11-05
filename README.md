@@ -142,7 +142,7 @@ Segue esturura do projeto.
 
 ## Deploy
 
-Segue esturura do deploy.
+Segue estrutura do deploy.
 
 ![arquiteturaDeppoytechchallenge](https://github.com/vagnerfabiog/fiap/blob/main/DiagramaDeploy.png)
 
