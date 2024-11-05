@@ -55,7 +55,8 @@ Para instalar e executar o projeto localmente:
 ### 3. Instale as dependências do projeto com o Poetry
 
 ```bash
- poetry install
+pip install -r requirements.txt
+pip install poetry 
 ```
 
 ### 4. Inicialize o servidor da API
